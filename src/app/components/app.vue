@@ -13,7 +13,6 @@ module.exports = {
   }
 }
 </script>
-
 <style>
 body {
   font-weight: bold;

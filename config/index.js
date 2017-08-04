@@ -5,7 +5,9 @@ module.exports = {
   serverPort: process.env.SERVER_PORT || process.env.npm_package_config_serverPort,
   serverHost: process.env.SERVER_HOST || process.env.npm_package_config_serverHost,
   publicPath: process.env.PUBLIC_PATH || process.env.npm_package_config_publicPath,
-  build(options = {}){
+  FB_KEY: process.env.RABARK_FB_KEY || '',
+  FB_SECRET: process.env.RABARK_FB_SECRET || '',
+  build (options = {}){
     return webp(Object.assign(options, module.exports));
   }
 };

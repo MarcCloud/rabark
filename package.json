@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "config": {
     "env": "development",
-    "serverHost": "127.0.0.1",
+    "serverHost": "localhost",
     "serverPort": 3000,
     "publicPath": "/",
     "locale": "en-US"
@@ -21,7 +21,11 @@
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.25.0",
+    "grant-koa": "^3.8.0",
     "koa": "^2.3.0",
+    "koa-mount": "^3.0.0",
+    "koa-qs": "^2.0.0",
+    "koa-session": "^5.5.0",
     "koa-static": "^4.0.1",
     "koa-vue-builder": "^0.9.0",
     "vue": "^2.4.2",

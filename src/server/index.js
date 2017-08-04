@@ -1,12 +1,14 @@
 const koa = require('koa');
 const router = require('koa-router')();
 const serve = require('koa-static');
+const session = require('koa-session');
+const mount = require('koa-mount');
+const Grant = require('grant-koa');
+const koaqs = require('koa-qs');
 const {vueHandler} = require('./middlewares/vue');
+const authentication = require('./middlewares/authentication');
 const HtmlWriterStream = require('./html-writer-stream');
 
-/*
-* HTTP server class.
-*/
 exports.server = function server (config) {
   return {
     server: null,
@@ -14,19 +16,20 @@ exports.server = function server (config) {
       return (async () => {
       if (this.server) return this;
 
+      const grant = new Grant(require('../../config/auth'));
       const app = new koa();
-
-      // serve static assets
+      koaqs(app);
+      app.keys = ['grant']
+      app.use(session(app))
+      app.use(mount(grant))
       let staticPath = 'dist/client';
       app.use(serve(staticPath));
-
+      app.use(authentication.routes());
       // basic middlewware to set config on ctx
       app.use(async (ctx, next) => {
         ctx.config = config
         await next();
       });
-
-      // streaming from root route
       router.get('/', async (ctx, next) => {
         ctx.type = 'html';
         if (ctx.vue) {
