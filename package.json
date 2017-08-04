@@ -1,0 +1,50 @@
+{
+  "name": "rabark",
+  "version": "1.0.0",
+  "description": "Pet racking app for the web.",
+  "main": "./src/index.js",
+  "config": {
+    "env": "development",
+    "serverHost": "127.0.0.1",
+    "serverPort": 3000,
+    "publicPath": "/",
+    "locale": "en-US"
+  },
+  "scripts": {
+    "build": "npm run build:client; npm run build:server;",
+    "build:client": "node ./scripts/build-client.js",
+    "build:server": "node ./scripts/build-server.js",
+    "start": "nodemon ./scripts/start",
+    "lint": "eslint src/"
+  },
+  "author": "Marco Romero <marccloud.11@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-runtime": "^6.25.0",
+    "koa": "^2.3.0",
+    "koa-static": "^4.0.1",
+    "koa-vue-builder": "^0.9.0",
+    "vue": "^2.4.2",
+    "vue-builder": "^1.7.2",
+    "vue-server-renderer": "^2.4.2",
+    "vue-template-compiler": "^2.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.3.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "inline-environment-variables-webpack-plugin": "^1.2.1",
+    "koa-webpack-hot-middleware": "^1.0.3",
+    "nodemon": "^1.11.0",
+    "postcss-cssnext": "^3.0.2",
+    "vue-loader": "^13.0.2",
+    "webpack": "^3.4.1",
+    "webpack-manifest-plugin": "^1.2.1"
+  }
+}
