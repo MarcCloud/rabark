@@ -25,7 +25,6 @@ exports.server = function server (config) {
       let staticPath = 'dist/client';
       app.use(serve(staticPath));
       app.use(authentication.routes());
-      // basic middlewware to set config on ctx
       app.use(async (ctx, next) => {
         ctx.config = config
         await next();
